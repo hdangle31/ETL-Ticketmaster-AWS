@@ -1,0 +1,46 @@
+[
+  {
+    "GlueJobName": "silver_transform",
+    "GlueScriptFileName": "silver.py",
+    "Type": "glueetl",
+    "GlueVersion": "4.0",
+    "PythonVersion": "3",
+    "MaxConcurrentRuns": 1,
+    "JobLanguage": "python",
+    "JobLibs": "data-engineering-basic/joblib.zip",
+    "JobPipLibs": "",
+    "ExtraJars": "",
+    "EnableBookmark": false,
+    "EnableGlueDataCatalog": true,
+    "NumberOfWorkers": 3,
+    "WorkerTypes": "G.1X",
+    "Connections": [
+      "data-subnet-b"
+    ],
+    "AdditionalConfig": [
+      "IcebergMain"
+    ]
+  },
+  {
+    "GlueJobName": "gold_transform",
+    "GlueScriptFileName": "gold.py",
+    "Type": "glueetl",
+    "GlueVersion": "4.0",
+    "PythonVersion": "3",
+    "MaxConcurrentRuns": 1,
+    "JobLanguage": "python",
+    "JobLibs": "data-engineering-basic/joblib.zip",
+    "JobPipLibs": "",
+    "ExtraJars": "",
+    "EnableBookmark": false,
+    "EnableGlueDataCatalog": true,
+    "NumberOfWorkers": 3,
+    "WorkerTypes": "G.1X",
+    "Connections": [
+      "data-subnet-b"
+    ],
+    "AdditionalConfig": [
+      "IcebergMain"
+    ]
+  }
+]
