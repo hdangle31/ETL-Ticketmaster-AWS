@@ -1,0 +1,10 @@
+pull_api:
+  name: ${self:custom.prefix}-pull_api
+  handler: pull_api.lambda_handler
+  layers:
+    - Ref: DefaultLambdaLayer
+    - Ref: PythonRequirementsLambdaLayer
+    - Ref: PandasNumpyLambdaLayer
+  environment:
+    NAME:  ${env:NAMESPACE}
+
