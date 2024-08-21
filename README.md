@@ -64,4 +64,5 @@ To deploy this pipeline, you need the following:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/hdangle31/etl-ticketmaster-aws.git
+   git clone https://github.com/hdangle31/ETL-Ticketmaster-AWS.git
+
