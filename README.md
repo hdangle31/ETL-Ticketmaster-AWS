@@ -4,13 +4,13 @@ This repository showcases an ETL pipeline designed to extract, transform, and lo
 
 ## Table Contents
 
- - [Architecture Overview](#architecture-overview)
-   - [Business Insights](#business-insights)
-   - [Key Features](#key-features)
-   - [Technology](#technology)
-   - [ETL Process](#etl-process)
- - [Prerequisites](#prerequisites)
- - [Getting Started](#getting-started)
+I. [Architecture Overview](#architecture-overview)
+ i.[Business Insights](#business-insights)
+ ii. [Key Features](#key-features)
+ iii. [Technology](#technology)
+ iv. [ETL Process](#etl-process)
+II. [Prerequisites](#prerequisites)
+III. [Getting Started](#getting-started)
 
 ## Architecture Overview
 
