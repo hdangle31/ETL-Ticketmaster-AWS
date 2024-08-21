@@ -1,8 +1,16 @@
- Ticketmaster API - Data Engineer ETL Pipeline
-# Ticketmaster ETL Pipeline
- Ticketmaster API - Data Engineer ETL Pipeline
+# Ticketmaster API - Data Engineer ETL Pipeline
 
 This repository showcases an ETL pipeline designed to extract, transform, and load data from the Ticketmaster Discovery API into a structured format suitable for analytics and reporting.
+
+## Table Contents
+
+ - [Architecture Overview](#architecture-overview)
+   - [Business Insights](#business-insights)
+   - [Key Features](#key-features)
+   - [Technology](#technology)
+   - [ETL Process](#etl-process)
+ - [Prerequisites](#prerequisites)
+ - [Getting Started](#getting-started)
 
 ## Architecture Overview
 
@@ -10,11 +18,11 @@ This repository showcases an ETL pipeline designed to extract, transform, and lo
 
 ### Business Insights
 
-1. What are the most popular events in a specific region or city?
-2. What types of events (e.g., concerts, sports, theater) are most common in different locations?
-3. What are the average ticket prices for different types of events?
-4. How do ticket prices vary across different venues?
-5. Which venues host the most events?
+- What are the most popular events in a specific region or city?
+- What types of events (e.g., concerts, sports, theater) are most common in different locations?
+- What are the average ticket prices for different types of events?
+- How do ticket prices vary across different venues?
+- Which venues host the most events?
 
 ### Key Features
 
@@ -46,11 +54,11 @@ This repository showcases an ETL pipeline designed to extract, transform, and lo
 
 ### ETL Process
 
-1. **Data Extraction:** AWS Lambda is triggered periodically by Amazon EventBridge to pull data from the Ticketmaster Discovery API.
-2. **Data Landing:** The raw JSON data is stored in an S3 bucket (Bronze Layer).
-3. **Data Transformation:** AWS Glue jobs transform the raw data into a standardized Parquet format and store it in another S3 bucket (Silver Layer).
-4. **Data Loading:** Transformed data is loaded into Gold Layer for structured querying and reporting.
-5. **Data Consumption:** Using Amazon Athena and QuickSight, the data is made available for querying and visualization.
+- **Data Extraction:** AWS Lambda is triggered periodically by Amazon EventBridge to pull data from the Ticketmaster Discovery API.
+- **Data Landing:** The raw JSON data is stored in an S3 bucket (Bronze Layer).
+- **Data Transformation:** AWS Glue jobs transform the raw data into a standardized Parquet format and store it in another S3 bucket (Silver Layer).
+- **Data Loading:** Transformed data is loaded into Gold Layer for structured querying and reporting.
+- **Data Consumption:** Using Amazon Athena and QuickSight, the data is made available for querying and visualization.
 
 ## Prerequisites
 
