@@ -61,10 +61,18 @@ def fetch_ticketmaster_events(api_key, locale, startDateTime, size, countryCode,
 
 
 if __name__ == "__main__":
-    fetch_ticketmaster_events()
-
-
-
+    fetch_ticketmaster_events(        # Define your API key and endpoint
+        os.environ['TICKETMASTER_API_KEY'],
+        '*',
+        '2024-08-31T01:57:00Z',
+        200,
+        'US',
+        'KnvZfZ7vAv1',
+        'KZazBEonSMnZfZ7vaa1',
+        'date,asc',
+        'https://app.ticketmaster.com/discovery/v2/events.json'
+    )
+   
 #     # Save the data to a JSON file
 #     with open('ticketmaster_data_2.json', 'w') as json_file:
 #         json.dump(all_data, json_file, indent=4)
