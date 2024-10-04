@@ -1,7 +1,7 @@
 [
   {
-    "GlueJobName": "silver_transform",
-    "GlueScriptFileName": "silver.py",
+    "GlueJobName": "dang3107_gold",
+    "GlueScriptFileName": "dang3107/gold.py",
     "Type": "glueetl",
     "GlueVersion": "4.0",
     "PythonVersion": "3",
@@ -12,7 +12,7 @@
     "ExtraJars": "",
     "EnableBookmark": false,
     "EnableGlueDataCatalog": true,
-    "NumberOfWorkers": 3,
+    "NumberOfWorkers": 2,
     "WorkerTypes": "G.1X",
     "Connections": [
       "data-subnet-b"
@@ -22,8 +22,8 @@
     ]
   },
   {
-    "GlueJobName": "gold_transform",
-    "GlueScriptFileName": "gold.py",
+    "GlueJobName": "dang3107_silver",
+    "GlueScriptFileName": "dang3107/silver.py",
     "Type": "glueetl",
     "GlueVersion": "4.0",
     "PythonVersion": "3",
@@ -34,7 +34,7 @@
     "ExtraJars": "",
     "EnableBookmark": false,
     "EnableGlueDataCatalog": true,
-    "NumberOfWorkers": 3,
+    "NumberOfWorkers": 2,
     "WorkerTypes": "G.1X",
     "Connections": [
       "data-subnet-b"

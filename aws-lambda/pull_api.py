@@ -22,7 +22,7 @@ def lambda_handler(event, context):
         countryCode = 'US'
         genreID = 'KnvZfZ7vAv1'
         sort = 'date,asc'
-        startDateTime = '2024-08-31T01:57:00Z'
+        startDateTime = '2024-10-01T01:57:00Z'
         subGenreId = 'KZazBEonSMnZfZ7vaa1'
         locale = '*'
 
@@ -35,8 +35,8 @@ def lambda_handler(event, context):
         
         # Specify S3 Bucket and Object
         bucket_name = V.DATA_LANDING_BUCKET_NAME
-        object_key = add_timestamp_to_filename(V.RAW_ZONE)
-        s3_saving_path = f's3://{bucket_name}/bronze/{object_key}'
+        file_name = add_timestamp_to_filename(V.BRONZE_ZONE)
+        object_key = f'dang3107/bronze/{file_name}'
     
         # Upload the CSV to S3
 
@@ -46,7 +46,7 @@ def lambda_handler(event, context):
             Key=object_key
         )
 
-        print(f'Successfully uploaded the CSV to {s3_saving_path}')
+        print(f'Successfully uploaded the CSV to {bucket_name}/{object_key}')
 
 
         return {"status": "SUCCESS"}
@@ -56,3 +56,5 @@ def lambda_handler(event, context):
         logger.error(traceback.format_exc())
 
         return {"status": "FAIL", "error": f"{ex}"}
+    
+    
