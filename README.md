@@ -9,6 +9,8 @@ I. [Architecture Overview](#architecture-overview) \
  &nbsp; &nbsp; ii. [Key Features](#key-features) \
  &nbsp; &nbsp; iii. [Technology](#technology) \
  &nbsp; &nbsp; iv. [ETL Process](#etl-process) \
+ &nbsp; &nbsp; v. [Data Schema](#data-schema) \
+
 II. [Prerequisites](#prerequisites) \
 III. [Getting Started](#getting-started) 
 
