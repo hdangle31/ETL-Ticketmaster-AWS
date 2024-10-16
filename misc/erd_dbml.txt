@@ -1,0 +1,83 @@
+Table dim_event {
+    event_id string [pk]
+    event_name string
+    event_url string
+    locale string
+    current_date string
+}
+
+Table dim_venue {
+    venue_id string [pk]
+    venue_name string
+    venue_address string
+    venue_city string
+    venue_state string
+    venue_country string
+    venue_postal_code string
+    venue_latitude string
+    venue_longitude string
+    seatmap_url string
+    parking_info string
+    current_date string
+}
+
+Table dim_segment {
+    segment_id string [pk]
+    segment_name string
+    current_date string
+}
+
+Table dim_genre {
+    genre_id string [pk]
+    genre_name string
+    current_date string
+}
+
+Table dim_subGenre {
+    subGenre_id string [pk]
+    subGenre_name string
+    current_date string
+}
+
+Table dim_type {
+    type_id string [pk]
+    type_name string
+    current_date string
+}
+
+Table dim_subType {
+    subType_id string [pk]
+    subType_name string
+    current_date string
+}
+
+Table dim_promoter {
+    promoter_id string [pk]
+    promoter_name string
+    current_date string
+}
+
+Table fact_events {
+    event_id string [ref: > dim_event.event_id]
+    venue_id string [ref: > dim_venue.venue_id]
+    segment_id string [ref: > dim_segment.segment_id]
+    genre_id string [ref: > dim_genre.genre_id]
+    subGenre_id string [ref: > dim_subGenre.subGenre_id]
+    type_id string [ref: > dim_type.type_id]
+    subType_id string [ref: > dim_subType.subType_id]
+    promoter_id string [ref: > dim_promoter.promoter_id]
+    box_office_phone_number string
+    box_office_open_hours string
+    box_office_accepted_payment string
+    box_office_will_call_detail string
+    min_price float
+    max_price float
+    average_price double
+    price_currency string
+    event_date timestamp
+    sales_duration_days int
+    event_sales_start_date timestamp
+    event_sales_end_date timestamp
+    curent_date string
+}
+
