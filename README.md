@@ -61,11 +61,11 @@ III. [Getting Started](#getting-started)
 - **Data Loading:** Transformed data is loaded into Gold Layer for structured querying and reporting.
 - **Data Consumption:** Using Amazon Athena and QuickSight, the data is made available for querying and visualization.
 
+![Orchestration](./step-func-arch.png)
+
 ### Data Schema
 
 ![Ticketmaster ERD](./schema.png)
-
-
 
 ## Prerequisites
 
@@ -75,11 +75,14 @@ To deploy this pipeline, you need the following:
 - Access to the Ticketmaster Discovery API.
 - AWS CLI or SDK configured.
 - Adding environment variables for Lambda
-![TICKETMASTER_API_KEY](./lambda.png)
 
 ## Getting Started
 
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/hdangle31/ETL-Ticketmaster-AWS.git
+
+2. **Adding environment variables for Lambda**
+
+![TICKETMASTER_API_KEY](./lambda.png)
 
