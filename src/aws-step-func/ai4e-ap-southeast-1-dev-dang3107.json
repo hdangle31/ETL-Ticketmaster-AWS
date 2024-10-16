@@ -1,0 +1,144 @@
+{
+    "Comment": "State machine to fetching data, run 2 Glue jobs and 9 crawlers",
+    "StartAt": "fetch_events",
+    "States": {
+      "fetch_events": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::lambda:invoke",
+        "Parameters": {
+          "FunctionName": "lbd-func-dang3107",
+          "Payload.$": "$"
+        },
+        "ResultPath": "$.output_fetch_events",
+        "Retry": [
+          {
+            "ErrorEquals": [
+              "Lambda.ServiceException",
+              "Lambda.AWSLambdaException",
+              "Lambda.SdkClientException",
+              "Lambda.TooManyRequestsException"
+            ],
+            "IntervalSeconds": 2,
+            "MaxAttempts": 6,
+            "BackoffRate": 2
+          }
+        ],
+        "Next": "is_fetching_successful?"
+      },
+      "is_fetching_successful?": {
+        "Type": "Choice",
+        "Choices": [
+          {
+            "Variable": "$.output_fetch_events.Payload.status",
+            "StringEquals": "SUCCESS",
+            "Next": "run_silver_glue"
+          },
+          {
+            "Variable": "$.output_fetch_events.Payload.status",
+            "StringEquals": "FAIL",
+            "Next": "fail_state"
+          }
+        ]
+      },
+      "run_silver_glue": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::glue:startJobRun.sync",
+        "Parameters": {
+          "JobName": "ai4e-ap-southeast-1-dev-glue-jb-dang3107_silver",
+          "Arguments": {
+            "--S3_INPUT_PATH.$": "$.output_fetch_events.Payload.S3_INPUT_PATH"
+          }
+        },
+        "ResultPath": "$.output_run_silver_glue",
+        "Next": "run_gold_glue"
+      },
+      "run_gold_glue": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::glue:startJobRun.sync",
+        "Parameters": {
+          "JobName": "ai4e-ap-southeast-1-dev-glue-jb-dang3107_gold"
+        },
+        "Next": "start_fact-events_crawler"
+      },
+      "start_fact-events_crawler": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+        "Parameters": {
+          "Name": "ai4e-ap-southeast-1-dev-glue-cwl-ai4e-dang3107-fact_events"
+        },
+        "Next": "start_dim_venue_crawler"
+      },
+      "start_dim_venue_crawler": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+        "Parameters": {
+          "Name": "ai4e-ap-southeast-1-dev-glue-cwl-ai4e-dang3107-dim_venue"
+        },
+        "Next": "start_dim_type_crawler"
+      },
+      "start_dim_type_crawler": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+        "Parameters": {
+          "Name": "ai4e-ap-southeast-1-dev-glue-cwl-ai4e-dang3107-dim_type"
+        },
+        "Next": "start_dim_subType_crawler"
+      },
+      "start_dim_subType_crawler": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+        "Parameters": {
+          "Name": "ai4e-ap-southeast-1-dev-glue-cwl-ai4e-dang3107-dim_subType"
+        },
+        "Next": "start_dim_subGenre_crawler"
+      },
+      "start_dim_subGenre_crawler": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+        "Parameters": {
+          "Name": "ai4e-ap-southeast-1-dev-glue-cwl-ai4e-dang3107-dim_subGenre"
+        },
+        "Next": "start_dim_segment_crawler"
+      },
+      "start_dim_segment_crawler": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+        "Parameters": {
+          "Name": "ai4e-ap-southeast-1-dev-glue-cwl-ai4e-dang3107-dim_segment"
+        },
+        "Next": "start_dim_promoter_crawler"
+      },
+      "start_dim_promoter_crawler": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+        "Parameters": {
+          "Name": "ai4e-ap-southeast-1-dev-glue-cwl-ai4e-dang3107-dim_promoter"
+        },
+        "Next": "start_dim_genre_crawler"
+      },
+      "start_dim_genre_crawler": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+        "Parameters": {
+          "Name": "ai4e-ap-southeast-1-dev-glue-cwl-ai4e-dang3107-dim_genre"
+        },
+        "Next": "start_dim_event_crawler"
+      },
+      "start_dim_event_crawler": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::aws-sdk:glue:startCrawler",
+        "Parameters": {
+          "Name": "ai4e-ap-southeast-1-dev-glue-cwl-ai4e-dang3107-dim_event"
+        },
+        "Next": "pass_state"
+      },
+      "fail_state": {
+        "Type": "Fail",
+        "Error": "JobFailed",
+        "Cause": "The job failed."
+      },
+      "pass_state": {
+        "Type": "Succeed"
+      }
+    }
+  }

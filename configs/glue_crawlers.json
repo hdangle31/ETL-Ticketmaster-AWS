@@ -1,0 +1,56 @@
+[
+  {
+    "namespace": "ai4e",
+    "database": "dang3107",
+    "table": "fact_events",
+    "data_path": "dang3107/gold/fact_events/"
+  },
+  {
+    "namespace": "ai4e",
+    "database": "dang3107",
+    "table": "fact_events",
+    "data_path": "dang3107/gold/dim_venue/"
+  },  
+  {
+    "namespace": "ai4e",
+    "database": "dang3107",
+    "table": "fact_events",
+    "data_path": "dang3107/gold/dim_type/"
+  },  
+  {
+    "namespace": "ai4e",
+    "database": "dang3107",
+    "table": "fact_events",
+    "data_path": "dang3107/gold/dim_subType/"
+  },  
+  {
+    "namespace": "ai4e",
+    "database": "dang3107",
+    "table": "fact_events",
+    "data_path": "dang3107/gold/dim_subGenre/"
+  },  
+  {
+    "namespace": "ai4e",
+    "database": "dang3107",
+    "table": "fact_events",
+    "data_path": "dang3107/gold/dim_segment/"
+  },  
+  {
+    "namespace": "ai4e",
+    "database": "dang3107",
+    "table": "fact_events",
+    "data_path": "dang3107/gold/dim_promoter/"
+  },
+  {
+    "namespace": "ai4e",
+    "database": "dang3107",
+    "table": "fact_events",
+    "data_path": "dang3107/gold/dim_genre/"
+  },
+  {
+    "namespace": "ai4e",
+    "database": "dang3107",
+    "table": "fact_events",
+    "data_path": "dang3107/gold/dim_event/"
+  }
+]
