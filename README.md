@@ -63,45 +63,8 @@ III. [Getting Started](#getting-started)
 
 ### Data Schema
 
-| Column Name                    | Data Type | Nullable |
-|--------------------------------|-----------|----------|
-| event_id                       | string    | true     |
-| event_name                     | string    | true     |
-| event_url                      | string    | true     |
-| locale                         | string    | true     |
-| event_date                     | string    | true     |
-| event_sales_start_date         | string    | true     |
-| event_sales_end_date           | string    | true     |
-| venue_id                       | string    | true     |
-| venue_name                     | string    | true     |
-| venue_address                  | string    | true     |
-| venue_city                     | string    | true     |
-| venue_state                    | string    | true     |
-| venue_country                  | string    | true     |
-| venue_postal_code              | string    | true     |
-| venue_latitude                 | string    | true     |
-| venue_longitude                | string    | true     |
-| seatmap_url                    | string    | true     |
-| promoter_name                  | string    | true     |
-| promoter_id                    | string    | true     |
-| parking_info                   | string    | true     |
-| segment_id                     | string    | true     |
-| segment_name                   | string    | true     |
-| genre_id                       | string    | true     |
-| genre_name                     | string    | true     |
-| subGenre_id                    | string    | true     |
-| subGenre_name                  | string    | true     |
-| type_id                        | string    | true     |
-| type_name                      | string    | true     |
-| subType_id                     | string    | true     |
-| subType_name                   | string    | true     |
-| price_currency                 | string    | true     |
-| min_price                      | double    | true     |
-| max_price                      | double    | true     |
-| box_office_phone_number        | string    | true     |
-| box_office_open_hours          | string    | true     |
-| box_office_accepted_payment    | string    | true     |
-| box_office_will_call_detail    | string    | true     |
+![Ticketmaster ERD](./schema.png)
+
 
 
 ## Prerequisites
@@ -111,6 +74,8 @@ To deploy this pipeline, you need the following:
 - An AWS account with the necessary permissions.
 - Access to the Ticketmaster Discovery API.
 - AWS CLI or SDK configured.
+- Adding environment variables for Lambda
+![TICKETMASTER_API_KEY](./lambda.png)
 
 ## Getting Started
 
